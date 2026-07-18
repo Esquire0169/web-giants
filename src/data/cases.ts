@@ -1,3 +1,5 @@
+import { asset } from '../lib/asset'
+
 export type CaseKind = 'external' | 'private'
 
 export interface CaseBase {
@@ -18,7 +20,7 @@ export const CASE_BASE: CaseBase[] = [
   {
     id: 'mystic',
     name: 'MYSTIC',
-    image: '/cases/mystic.jpg',
+    image: asset('cases/mystic.jpg'),
     stack: ['React', 'TypeScript', 'AI'],
     featured: true,
     accent: '#eab308',
@@ -28,7 +30,7 @@ export const CASE_BASE: CaseBase[] = [
   {
     id: 'parma',
     name: 'PARMA',
-    image: '/cases/parma.jpg',
+    image: asset('cases/parma.jpg'),
     stack: ['React', 'Vite', 'Tailwind'],
     accent: '#d4d4d8',
     kind: 'external',
@@ -37,29 +39,33 @@ export const CASE_BASE: CaseBase[] = [
   {
     id: 'ai-3d',
     name: 'AI 3D SANDBOX',
-    image: '/cases/ai-3d.jpg',
+    image: asset('cases/ai-3d.jpg'),
     stack: ['Next.js', 'Three.js', 'R3F'],
     accent: '#57d7ff',
     kind: 'private',
-    gallery: ['/cases/ai-3d.jpg', '/cases/ai-3d-plan.jpg', '/cases/ai-3d-modules.jpg'],
+    gallery: [
+      asset('cases/ai-3d.jpg'),
+      asset('cases/ai-3d-plan.jpg'),
+      asset('cases/ai-3d-modules.jpg'),
+    ],
   },
   {
     id: 'kids',
     name: 'SPORTKIDS',
-    image: '/cases/sportkids.jpg',
+    image: asset('cases/sportkids.jpg'),
     stack: ['Next.js', 'TypeScript', 'PostgreSQL'],
     accent: '#2dd4bf',
     kind: 'private',
-    gallery: ['/cases/sportkids.jpg', '/cases/sportkids-ops.jpg'],
+    gallery: [asset('cases/sportkids.jpg'), asset('cases/sportkids-ops.jpg')],
   },
   {
     id: 'superpower',
     name: 'SUPERPOWER',
-    image: '/cases/superpower.jpg',
+    image: asset('cases/superpower.jpg'),
     stack: ['React', 'Zustand', 'Recharts'],
     accent: '#60a5fa',
     kind: 'private',
-    gallery: ['/cases/superpower.jpg', '/cases/superpower-ops.jpg'],
+    gallery: [asset('cases/superpower.jpg'), asset('cases/superpower-ops.jpg')],
   },
 ]
 
