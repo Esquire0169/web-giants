@@ -1,0 +1,101 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" fill="none" role="img" aria-labelledby="title">
+  <title id="title">Web Giants � brand board</title>
+  <rect width="1200" height="800" fill="#08090A"/>
+
+  <text x="64" y="64" fill="#8A8D94" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="11" letter-spacing="0.24em">WEB GIANTS / LUXURY TECH IDENTITY</text>
+
+  <!-- Primary wordmark -->
+  <text x="64" y="130" fill="#8A8D94" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="10" letter-spacing="0.2em">01  PRIMARY WORDMARK</text>
+  <text x="64" y="190" font-family="Archivo, Helvetica, Arial, sans-serif" font-size="56" font-weight="800" letter-spacing="0.16em">
+    <tspan fill="#ECEAE4">WEB GIANTS</tspan><tspan fill="#C9F24B">.</tspan>
+  </text>
+
+  <!-- Accent -->
+  <text x="64" y="260" fill="#8A8D94" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="10" letter-spacing="0.2em">02  ACCENT WORDMARK</text>
+  <text x="64" y="310" font-family="Archivo, Helvetica, Arial, sans-serif" font-size="36" font-weight="800" letter-spacing="0.16em">
+    <tspan fill="#ECEAE4">WEB </tspan><tspan fill="#C9F24B">GIANTS</tspan><tspan fill="#C9F24B">.</tspan>
+  </text>
+
+  <!-- Lockup -->
+  <text x="64" y="380" fill="#8A8D94" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="10" letter-spacing="0.2em">03  LOCKUP</text>
+  <g transform="translate(64 400)">
+    <rect x="6" y="6" width="52" height="52" rx="2" stroke="rgba(236,234,228,0.35)" stroke-width="1.5"/>
+    <path fill="#ECEAE4" d="M18 46V18h5.5v28H18ZM40.5 46V18H46v28h-5.5Z"/>
+    <path fill="#ECEAE4" d="M18 18h28v4.5H18Z"/>
+    <rect x="28.5" y="28.5" width="7" height="7" fill="#C9F24B"/>
+    <text x="78" y="44" font-family="Archivo, Helvetica, Arial, sans-serif" font-size="30" font-weight="800" letter-spacing="0.16em">
+      <tspan fill="#ECEAE4">WEB GIANTS</tspan><tspan fill="#C9F24B">.</tspan>
+    </text>
+  </g>
+
+  <!-- Symbol column -->
+  <text x="820" y="130" fill="#8A8D94" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="10" letter-spacing="0.2em">04  EMBLEM</text>
+  <g transform="translate(820 150)">
+    <rect width="112" height="112" rx="8" fill="#131417"/>
+    <g transform="translate(24 24)">
+      <rect x="6" y="6" width="52" height="52" rx="2" stroke="rgba(236,234,228,0.35)" stroke-width="1.5"/>
+      <path fill="#ECEAE4" d="M18 46V18h5.5v28H18ZM40.5 46V18H46v28h-5.5Z"/>
+      <path fill="#ECEAE4" d="M18 18h28v4.5H18Z"/>
+      <rect x="28.5" y="28.5" width="7" height="7" fill="#C9F24B"/>
+    </g>
+  </g>
+
+  <g transform="translate(960 150)">
+    <rect width="112" height="112" rx="24" fill="#08090A" stroke="rgba(236,234,228,0.12)"/>
+    <g transform="translate(24 24)">
+      <rect x="12" y="12" width="40" height="40" rx="1.5" stroke="rgba(236,234,228,0.28)" stroke-width="1.25"/>
+      <path fill="#ECEAE4" d="M21 44V20h4.2v24H21ZM38.8 44V20H43v24h-4.2Z"/>
+      <path fill="#ECEAE4" d="M21 20h22v3.5H21Z"/>
+      <rect x="28.75" y="28.75" width="6.5" height="6.5" fill="#C9F24B"/>
+    </g>
+  </g>
+
+  <!-- On light -->
+  <rect x="64" y="540" width="560" height="200" rx="4" fill="#F2F1EC"/>
+  <text x="96" y="580" fill="#8A8D94" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="10" letter-spacing="0.2em">05  ON LIGHT</text>
+  <text x="96" y="640" fill="#08090A" font-family="Archivo, Helvetica, Arial, sans-serif" font-size="36" font-weight="800" letter-spacing="0.16em">WEB GIANTS.</text>
+  <g transform="translate(96 660) scale(0.65)">
+    <rect x="6" y="6" width="52" height="52" rx="2" stroke="rgba(8,9,10,0.28)" stroke-width="1.5"/>
+    <path fill="#08090A" d="M18 46V18h5.5v28H18ZM40.5 46V18H46v28h-5.5Z"/>
+    <path fill="#08090A" d="M18 18h28v4.5H18Z"/>
+    <rect x="28.5" y="28.5" width="7" height="7" fill="#08090A"/>
+  </g>
+
+  <!-- Palette -->
+  <text x="820" y="340" fill="#8A8D94" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="10" letter-spacing="0.2em">06  PALETTE</text>
+  <rect x="820" y="364" width="48" height="48" rx="4" fill="#08090A" stroke="rgba(236,234,228,0.2)"/>
+  <rect x="884" y="364" width="48" height="48" rx="4" fill="#ECEAE4"/>
+  <rect x="948" y="364" width="48" height="48" rx="4" fill="#C9F24B"/>
+  <rect x="1012" y="364" width="48" height="48" rx="4" fill="#8A8D94"/>
+  <text x="820" y="450" fill="#8A8D94" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="10" letter-spacing="0.12em">INK � BONE � LIME � SILVER</text>
+
+  <!-- Scales -->
+  <text x="820" y="520" fill="#8A8D94" font-family="IBM Plex Mono, ui-monospace, monospace" font-size="10" letter-spacing="0.2em">07  ICON SCALE</text>
+  <g transform="translate(820 548)">
+    <rect width="56" height="56" rx="12" fill="#08090A"/>
+    <g transform="translate(10 10) scale(0.56)">
+      <rect x="12" y="12" width="40" height="40" rx="1.5" stroke="rgba(236,234,228,0.28)" stroke-width="1.25"/>
+      <path fill="#ECEAE4" d="M21 44V20h4.2v24H21ZM38.8 44V20H43v24h-4.2Z"/>
+      <path fill="#ECEAE4" d="M21 20h22v3.5H21Z"/>
+      <rect x="28.75" y="28.75" width="6.5" height="6.5" fill="#C9F24B"/>
+    </g>
+  </g>
+  <g transform="translate(900 560)">
+    <rect width="40" height="40" rx="9" fill="#08090A"/>
+    <g transform="translate(7 7) scale(0.4)">
+      <rect x="12" y="12" width="40" height="40" rx="1.5" stroke="rgba(236,234,228,0.28)" stroke-width="1.25"/>
+      <path fill="#ECEAE4" d="M21 44V20h4.2v24H21ZM38.8 44V20H43v24h-4.2Z"/>
+      <path fill="#ECEAE4" d="M21 20h22v3.5H21Z"/>
+      <rect x="28.75" y="28.75" width="6.5" height="6.5" fill="#C9F24B"/>
+    </g>
+  </g>
+  <g transform="translate(960 568)">
+    <rect width="32" height="32" rx="7" fill="#08090A"/>
+    <g transform="translate(6 6) scale(0.31)">
+      <rect x="12" y="12" width="40" height="40" rx="1.5" stroke="rgba(236,234,228,0.28)" stroke-width="1.25"/>
+      <path fill="#ECEAE4" d="M21 44V20h4.2v24H21ZM38.8 44V20H43v24h-4.2Z"/>
+      <path fill="#ECEAE4" d="M21 20h22v3.5H21Z"/>
+      <rect x="28.75" y="28.75" width="6.5" height="6.5" fill="#C9F24B"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 56" fill="none" role="img" aria-labelledby="title">
+  <title id="title">Web Giants — Atlas mark</title>
+  <!-- Institutional silhouette: monument / atlas. No face, no mascot. -->
+  <rect x="15" y="0" width="10" height="11" fill="#ECEAE4"/>
+  <path fill="#ECEAE4" d="M6 13 H34 L31 36 H9 Z"/>
+  <rect x="18.5" y="15" width="3" height="18" fill="#08090A"/>
+  <path fill="#ECEAE4" d="M6 15 L0 14 L0 18 L7 20 Z"/>
+  <path fill="#ECEAE4" d="M34 15 L40 14 L40 18 L33 20 Z"/>
+  <rect x="11" y="36" width="6" height="18" fill="#ECEAE4"/>
+  <rect x="23" y="36" width="6" height="18" fill="#ECEAE4"/>
+  <rect x="9" y="52" width="10" height="3" fill="#ECEAE4"/>
+  <rect x="21" y="52" width="10" height="3" fill="#ECEAE4"/>
+</svg>

@@ -1,0 +1,586 @@
+@import "tailwindcss";
+
+@theme {
+  /* ------ brand palette (Web Giants identity) ------ */
+  --color-ink: #08090a;
+  --color-coal: #0d0e10;
+  --color-graphite: #131417;
+  --color-olive-depth: #0c0f0a;
+  --color-slate-line: rgba(255, 255, 255, 0.08);
+  --color-bone: #eceae4;
+  --color-platinum: #d8d6d0;
+  --color-fog: #b0b2b8;
+  --color-dim: #8a8d94;
+  --color-lime: #c9f24b;
+  --color-lime-bright: #dcff5e;
+  --color-gilt: #c9b08a;
+  --color-gilt-bright: #e0cfae;
+  --color-cyan-ghost: #57d7ff;
+
+  /* ------ type ------ */
+  --font-display: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-serif-accent: "Instrument Serif", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+  /* ------ motion ------ */
+  --ease-cinema: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --animate-drift: drift 26s ease-in-out infinite alternate;
+  --animate-drift-slow: drift-slow 38s ease-in-out infinite alternate;
+  --animate-spin-slow: spin 40s linear infinite;
+  --animate-pulse-glow: pulse-glow 7s ease-in-out infinite;
+  --animate-marquee: marquee 42s linear infinite;
+
+  @keyframes drift {
+    from { transform: translate3d(-3%, -2%, 0) scale(1); }
+    to   { transform: translate3d(3%, 3%, 0) scale(1.06); }
+  }
+  @keyframes drift-slow {
+    from { transform: translate3d(2%, 1%, 0) rotate(0deg); }
+    to   { transform: translate3d(-2%, -2%, 0) rotate(6deg); }
+  }
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.55; }
+    50%      { opacity: 0.9; }
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to   { transform: translateX(-50%); }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--color-ink);
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-display);
+  font-optical-sizing: auto;
+  background: var(--color-ink);
+  color: var(--color-bone);
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+
+::selection {
+  background: var(--color-lime);
+  color: var(--color-ink);
+}
+
+/* consistent, premium keyboard focus across the main site */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid rgba(201, 242, 75, 0.7);
+  outline-offset: 3px;
+}
+
+/* honeypot: hidden from humans, kept in the DOM for bots */
+.hp-field {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+/* thin elegant scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--color-ink); }
+::-webkit-scrollbar-thumb {
+  background: #26282c;
+  border: 3px solid var(--color-ink);
+  border-radius: 8px;
+}
+
+@layer utilities {
+  /* oversized editorial display headline */
+  .display-xl {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-stretch: 118%;
+    line-height: 0.92;
+    letter-spacing: -0.025em;
+    text-transform: uppercase;
+  }
+
+  .serif-accent {
+    font-family: var(--font-serif-accent);
+    font-style: italic;
+    font-weight: 400;
+    text-transform: none;
+    letter-spacing: -0.01em;
+  }
+
+  /* small mono kicker label */
+  .kicker {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--color-fog);
+  }
+
+  /* film-grain overlay */
+  .noise::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  /* faint blueprint grid */
+  .grid-lines {
+    background-image:
+      linear-gradient(to right, rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: radial-gradient(ellipse 90% 70% at 50% 30%, black 20%, transparent 75%);
+  }
+
+  /* premium card surface */
+  .surface {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.035), rgba(255, 255, 255, 0.012) 60%);
+    border: 1px solid var(--color-slate-line);
+    transition:
+      border-color 0.5s var(--ease-cinema),
+      transform 0.5s var(--ease-cinema),
+      box-shadow 0.5s var(--ease-cinema);
+  }
+  .surface:hover {
+    border-color: rgba(255, 255, 255, 0.18);
+    transform: translateY(-4px);
+    box-shadow:
+      0 24px 60px -24px rgba(0, 0, 0, 0.8),
+      0 0 0 1px rgba(201, 242, 75, 0.06),
+      0 0 80px -30px rgba(201, 242, 75, 0.18);
+  }
+
+  /* link underline sweep */
+  .link-sweep {
+    position: relative;
+  }
+  .link-sweep::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -3px;
+    height: 1px;
+    width: 100%;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.45s var(--ease-cinema);
+  }
+  .link-sweep:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .chip {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.08em;
+    color: var(--color-fog);
+    border: 1px solid var(--color-slate-line);
+    border-radius: 9999px;
+    padding: 0.375rem 0.875rem;
+    transition: all 0.35s var(--ease-cinema);
+    white-space: nowrap;
+  }
+  .chip:hover {
+    color: var(--color-lime);
+    border-color: rgba(201, 242, 75, 0.35);
+    box-shadow: 0 0 24px -8px rgba(201, 242, 75, 0.35);
+  }
+
+  /* form field: luxury intake styling */
+  .field {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--color-slate-line);
+    border-radius: 0.75rem;
+    padding: 1.4rem 1.125rem 0.55rem;
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--color-bone);
+    transition:
+      border-color 0.35s var(--ease-cinema),
+      box-shadow 0.35s var(--ease-cinema),
+      background-color 0.35s var(--ease-cinema);
+  }
+  /* placeholder only appears once the label has floated out of the way */
+  .field::placeholder {
+    color: var(--color-dim);
+    opacity: 0;
+    transition: opacity 0.3s var(--ease-cinema) 0.1s;
+  }
+  .field:focus::placeholder {
+    opacity: 1;
+  }
+  .field:hover {
+    border-color: rgba(255, 255, 255, 0.16);
+  }
+  .field:focus {
+    outline: none;
+    border-color: rgba(201, 242, 75, 0.55);
+    background: rgba(255, 255, 255, 0.045);
+    box-shadow:
+      0 0 0 3px rgba(201, 242, 75, 0.12),
+      0 0 28px -10px rgba(201, 242, 75, 0.3);
+  }
+  .field[aria-invalid="true"] {
+    border-color: rgba(255, 128, 128, 0.55);
+  }
+
+  .field-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    font-weight: 500;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--color-fog);
+    margin-bottom: 0.5rem;
+  }
+
+  /* ------ floating label system ------ */
+  .float-wrap {
+    position: relative;
+  }
+  .float-label {
+    position: absolute;
+    left: 1.125rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-dim);
+    pointer-events: none;
+    transition:
+      top 0.35s var(--ease-cinema),
+      transform 0.35s var(--ease-cinema),
+      font-size 0.35s var(--ease-cinema),
+      color 0.35s var(--ease-cinema);
+  }
+  .float-label--area {
+    top: 1.45rem;
+  }
+  .float-wrap:focus-within .float-label,
+  .float-wrap[data-filled] .float-label,
+  .field:autofill ~ .float-label {
+    top: 0.55rem;
+    transform: translateY(0);
+    font-size: 0.5625rem;
+    letter-spacing: 0.24em;
+    color: var(--color-fog);
+  }
+  .float-wrap:focus-within .float-label {
+    color: rgba(201, 242, 75, 0.85);
+  }
+
+  /* completion: calm confirmation once a field holds a valid value */
+  .float-check {
+    position: absolute;
+    right: 1rem;
+    top: 50%;
+    transform: translateY(-50%) scale(0.6);
+    opacity: 0;
+    color: var(--color-lime);
+    font-size: 0.75rem;
+    pointer-events: none;
+    transition:
+      opacity 0.4s var(--ease-cinema),
+      transform 0.4s var(--ease-cinema);
+  }
+  .float-check--area {
+    top: 1.35rem;
+  }
+  .float-wrap[data-complete] .float-check {
+    opacity: 0.9;
+    transform: translateY(-50%) scale(1);
+  }
+  .float-wrap[data-complete] .float-check--area {
+    transform: scale(1);
+  }
+  .float-wrap[data-complete] .field:not(:focus):not([aria-invalid="true"]) {
+    border-color: rgba(201, 242, 75, 0.22);
+  }
+}
+
+/* desktop-only panel sheen: one slow light sweep, extremely restrained */
+@keyframes sheen {
+  0%   { transform: translateX(-160%) rotate(18deg); }
+  55%  { transform: translateX(260%) rotate(18deg); }
+  100% { transform: translateX(260%) rotate(18deg); }
+}
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .panel-sheen {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .panel-sheen::before {
+    content: "";
+    position: absolute;
+    top: -60%;
+    bottom: -60%;
+    left: 0;
+    width: 45%;
+    background: linear-gradient(
+      100deg,
+      transparent,
+      rgba(255, 255, 255, 0.035) 50%,
+      transparent
+    );
+    animation: sheen 11s var(--ease-cinema) infinite;
+  }
+}
+
+/* pause decorative keyframes while their section is offscreen */
+.ambient-paused *,
+.ambient-paused *::before,
+.ambient-paused *::after {
+  animation-play-state: paused !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  html { scroll-behavior: auto; }
+}
+
+/* ================================================================
+   Win98 easter egg (BootSequence + Win98Desktop)
+   ================================================================ */
+.win98 {
+  font-family: var(--font-mono), 'Courier New', monospace;
+  background: #008080;
+  color: #000;
+}
+.win98-panel {
+  background: #c0c0c0;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+}
+.win98-panel-inset {
+  background: #c0c0c0;
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+}
+.win98-btn {
+  background: #c0c0c0;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+  padding: 3px 10px;
+  font-family: var(--font-mono), 'Courier New', monospace;
+  font-size: 12px;
+  cursor: pointer;
+  color: #000;
+  min-width: 75px;
+  text-align: center;
+}
+.win98-btn:active {
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+}
+.win98-btn:focus-visible {
+  outline: 1px dotted #000;
+  outline-offset: -4px;
+}
+.win98-titlebar {
+  background: linear-gradient(90deg, #000080, #1084d0);
+  color: #fff;
+  font-size: 12px;
+  padding: 3px 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--font-mono), monospace;
+  font-weight: bold;
+  user-select: none;
+}
+.win98-titlebar--inactive {
+  background: linear-gradient(90deg, #808080, #b5b5b5);
+}
+.win98-titlebar:focus-visible {
+  outline: 1px dotted #fff;
+  outline-offset: -3px;
+}
+
+/* titlebar control buttons: larger hit area on touch screens */
+.win98-ctl {
+  width: 18px;
+  height: 18px;
+  font-size: 11px;
+}
+@media (pointer: coarse) {
+  .win98-ctl {
+    width: 28px;
+    height: 28px;
+    font-size: 14px;
+  }
+}
+
+/* desktop icon: retro selection + dotted keyboard focus */
+.win98-icon {
+  background: transparent;
+  border: 1px dotted transparent;
+  cursor: default;
+  user-select: none;
+}
+.win98-icon:hover {
+  background: rgba(0, 0, 128, 0.35);
+}
+.win98-icon[data-selected] {
+  background: rgba(0, 0, 128, 0.55);
+  border-color: rgba(255, 255, 255, 0.6);
+}
+.win98-icon:focus-visible {
+  outline: none;
+  background: rgba(0, 0, 128, 0.45);
+  border-color: #fff;
+}
+
+/* pressed taskbar button: classic inset + checker pattern */
+.win98-btn--pressed {
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  background-image: repeating-conic-gradient(#ffffff 0% 25%, #c0c0c0 0% 50%);
+  background-size: 4px 4px;
+  font-weight: bold;
+}
+
+/* start / context menu items */
+.win98-menuitem {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 5px 12px;
+  text-align: left;
+  cursor: default;
+}
+.win98-menuitem:hover,
+.win98-menuitem:focus-visible {
+  background: #000080;
+  color: #fff;
+  outline: none;
+}
+.win98-input {
+  background: #fff;
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  padding: 2px 4px;
+  font-family: var(--font-mono), monospace;
+  font-size: 12px;
+  color: #000;
+  outline: none;
+  width: 100%;
+}
+.win98-progress-track {
+  background: #fff;
+  border-top: 2px solid #808080;
+  border-left: 2px solid #808080;
+  border-right: 2px solid #fff;
+  border-bottom: 2px solid #fff;
+  height: 18px;
+  overflow: hidden;
+}
+.win98-progress-fill {
+  height: 100%;
+  background: repeating-linear-gradient(90deg, #000080, #000080 8px, #1084d0 8px, #1084d0 16px);
+  transition: width 0.3s linear;
+}
+.win98-taskbar {
+  background: #c0c0c0;
+  border-top: 2px solid #fff;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  padding: 0 6px;
+  gap: 4px;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10010;
+}
+.win98-start-btn {
+  background: #c0c0c0;
+  border-top: 2px solid #fff;
+  border-left: 2px solid #fff;
+  border-right: 2px solid #808080;
+  border-bottom: 2px solid #808080;
+  padding: 2px 8px;
+  font-family: var(--font-mono), monospace;
+  font-size: 13px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+@keyframes win98-blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+.blink {
+  animation: win98-blink 1s infinite;
+}
+.bios {
+  background: #000;
+  color: #aaa;
+  font-family: var(--font-mono), monospace;
+  font-size: 13px;
+  padding: 20px;
+  line-height: 1.7;
+}
+.crt::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 10001;
+  pointer-events: none;
+  background: repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.13) 2px, rgba(0, 0, 0, 0.13) 4px);
+}
+.crt::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 10002;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center, transparent 60%, rgba(0, 0, 0, 0.5) 100%);
+  animation: crt-flicker 0.15s infinite;
+}
+@keyframes crt-flicker {
+  0%, 97%, 100% { opacity: 1; }
+  95% { opacity: 0.95; }
+  98% { opacity: 0.92; }
+}

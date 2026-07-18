@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="title">
+  <title id="title">Web Giants mark — on light</title>
+  <rect x="6" y="6" width="52" height="52" rx="2" stroke="rgba(8,9,10,0.28)" stroke-width="1.5"/>
+  <path fill="#08090A" d="M18 46V18h5.5v28H18ZM40.5 46V18H46v28h-5.5Z"/>
+  <path fill="#08090A" d="M18 18h28v4.5H18Z"/>
+  <rect x="28.5" y="28.5" width="7" height="7" fill="#08090A"/>
+</svg>

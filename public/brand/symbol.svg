@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" role="img" aria-labelledby="title">
+  <title id="title">Web Giants symbol</title>
+  <rect x="8" y="8" width="48" height="48" rx="2" stroke="rgba(236,234,228,0.4)" stroke-width="1.5"/>
+  <rect x="16" y="16" width="32" height="32" rx="1" stroke="rgba(236,234,228,0.25)" stroke-width="1.25"/>
+  <path fill="#ECEAE4" d="M22 44V20h4v24h-4ZM38 44V20h4v24h-4Z"/>
+  <path fill="#ECEAE4" d="M22 20h20v3.5H22Z"/>
+  <rect x="28.5" y="28.5" width="7" height="7" fill="#C9F24B"/>
+</svg>
