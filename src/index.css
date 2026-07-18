@@ -200,6 +200,55 @@ button:focus-visible {
     box-shadow: 0 0 24px -8px rgba(201, 242, 75, 0.35);
   }
 
+  /* quarantine / caution tape across case visuals */
+  .case-tape {
+    pointer-events: none;
+    position: absolute;
+    z-index: 25;
+    top: 42%;
+    left: -18%;
+    width: 136%;
+    transform: rotate(-18deg);
+    display: flex;
+    justify-content: center;
+    padding: 0.55rem 0;
+    box-shadow:
+      0 8px 24px rgba(0, 0, 0, 0.45),
+      inset 0 1px 0 rgba(255, 255, 255, 0.25);
+    border-block: 2px solid rgba(0, 0, 0, 0.85);
+  }
+  .case-tape--wip {
+    background:
+      repeating-linear-gradient(
+        -45deg,
+        #f5d000 0 12px,
+        #111 12px 24px
+      );
+  }
+  .case-tape--live {
+    background:
+      repeating-linear-gradient(
+        -45deg,
+        #c9f24b 0 12px,
+        #111 12px 24px
+      );
+  }
+  .case-tape__label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #111;
+    background: #f5d000;
+    padding: 0.2rem 0.85rem;
+    white-space: nowrap;
+    box-shadow: 0 0 0 2px #111;
+  }
+  .case-tape--live .case-tape__label {
+    background: #c9f24b;
+  }
+
   /* form field: luxury intake styling */
   .field {
     width: 100%;

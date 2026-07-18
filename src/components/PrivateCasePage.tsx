@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { motion } from 'motion/react'
 import { getCaseById } from '../data/cases'
 import { useLocale } from '../i18n'
+import { CaseTape } from './CaseTape'
 
 const EASE = [0.22, 1, 0.36, 1] as const
 
@@ -108,6 +109,7 @@ export function PrivateCasePage({ caseId, onClose }: Props) {
             className="h-full w-full object-cover object-center"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent" />
+          <CaseTape status={base.status} eta={base.eta} />
         </motion.div>
 
         {/* gallery thumbs */}

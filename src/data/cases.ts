@@ -1,6 +1,8 @@
 import { asset } from '../lib/asset'
 
 export type CaseKind = 'external' | 'private'
+export type CaseStatus = 'live' | 'wip'
+export type CaseEta = '7d' | '1m' | '2m' | '6m'
 
 export interface CaseBase {
   id: string
@@ -10,6 +12,8 @@ export interface CaseBase {
   accent: string
   /** Approximate engagement floor, e.g. "$5k" */
   priceFrom: string
+  status: CaseStatus
+  eta?: CaseEta
   featured?: boolean
   kind: CaseKind
   /** External URL for public cases */
@@ -25,6 +29,7 @@ export const CASE_BASE: CaseBase[] = [
     image: asset('cases/mystic.jpg'),
     stack: ['React', 'TypeScript', 'AI'],
     priceFrom: '$5k',
+    status: 'live',
     featured: true,
     accent: '#eab308',
     kind: 'external',
@@ -36,6 +41,7 @@ export const CASE_BASE: CaseBase[] = [
     image: asset('cases/parma.jpg'),
     stack: ['React', 'Vite', 'Tailwind'],
     priceFrom: '$4k',
+    status: 'live',
     accent: '#d4d4d8',
     kind: 'external',
     href: 'https://ubparma.ru/',
@@ -46,6 +52,8 @@ export const CASE_BASE: CaseBase[] = [
     image: asset('cases/richmeb-site.jpg'),
     stack: ['React', 'Three.js', 'WebGL'],
     priceFrom: '$12k',
+    status: 'wip',
+    eta: '7d',
     accent: '#c4a574',
     kind: 'private',
     gallery: [
@@ -63,6 +71,8 @@ export const CASE_BASE: CaseBase[] = [
     image: asset('cases/ai-3d.jpg'),
     stack: ['Next.js', 'Three.js', 'R3F'],
     priceFrom: '$15k',
+    status: 'wip',
+    eta: '6m',
     accent: '#57d7ff',
     kind: 'private',
     gallery: [
@@ -77,6 +87,8 @@ export const CASE_BASE: CaseBase[] = [
     image: asset('cases/sportkids.jpg'),
     stack: ['Next.js', 'TypeScript', 'PostgreSQL'],
     priceFrom: '$20k',
+    status: 'wip',
+    eta: '1m',
     accent: '#2dd4bf',
     kind: 'private',
     gallery: [asset('cases/sportkids.jpg'), asset('cases/sportkids-ops.jpg')],
@@ -87,6 +99,8 @@ export const CASE_BASE: CaseBase[] = [
     image: asset('cases/superpower.jpg'),
     stack: ['React', 'Zustand', 'Recharts'],
     priceFrom: '$12k',
+    status: 'wip',
+    eta: '2m',
     accent: '#60a5fa',
     kind: 'private',
     gallery: [asset('cases/superpower.jpg'), asset('cases/superpower-ops.jpg')],

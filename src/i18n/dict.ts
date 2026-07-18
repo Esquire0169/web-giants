@@ -46,6 +46,18 @@ export interface Dict {
     openPrivate: string
     /** Template with `{price}`, e.g. "from {price}" */
     priceFrom: string
+    status: {
+      live: string
+      wip: string
+      /** Template with `{eta}` after the WIP label */
+      wipWithEta: string
+      eta: {
+        '7d': string
+        '1m': string
+        '2m': string
+        '6m': string
+      }
+    }
     othersKicker: string
     othersTitle: string
     othersBody: string
@@ -245,6 +257,17 @@ const en: Dict = {
     openExternal: 'Open project',
     openPrivate: 'View case',
     priceFrom: 'from {price}',
+    status: {
+      live: 'Live',
+      wip: 'In development',
+      wipWithEta: 'In development ({eta})',
+      eta: {
+        '7d': 'ETA 7 days',
+        '1m': 'ETA 1 month',
+        '2m': 'ETA 2 months',
+        '6m': 'ETA 6 months',
+      },
+    },
     othersKicker: 'Archive',
     othersTitle: 'And others',
     othersBody:
@@ -547,6 +570,17 @@ const ru: Dict = {
     openExternal: 'Открыть проект',
     openPrivate: 'Смотреть кейс',
     priceFrom: 'от {price}',
+    status: {
+      live: 'Работает',
+      wip: 'В разработке',
+      wipWithEta: 'В разработке ({eta})',
+      eta: {
+        '7d': 'Срок 7 дней',
+        '1m': 'Срок 1 месяц',
+        '2m': 'Срок 2 мес',
+        '6m': 'Срок 6 мес',
+      },
+    },
     othersKicker: 'Архив',
     othersTitle: 'И другие',
     othersBody:

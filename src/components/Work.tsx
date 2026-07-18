@@ -3,6 +3,7 @@ import { motion, useAnimationControls } from 'motion/react'
 import { Kicker, Reveal, useAmbientPause, useMotionBudget } from './Reveal'
 import { useLocale } from '../i18n'
 import { CASE_BASE, type CaseBase } from '../data/cases'
+import { CaseTape } from './CaseTape'
 
 const EASE = [0.22, 1, 0.36, 1] as const
 
@@ -127,6 +128,8 @@ function CaseCard({
               {privateBadge}
             </span>
           )}
+
+          <CaseTape status={c.status} eta={c.eta} />
 
           {c.featured && (
             <span
