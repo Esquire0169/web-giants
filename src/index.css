@@ -205,7 +205,6 @@ button:focus-visible {
     pointer-events: none;
     position: absolute;
     z-index: 25;
-    top: 42%;
     left: -18%;
     width: 136%;
     transform: rotate(-18deg);
@@ -218,6 +217,7 @@ button:focus-visible {
     border-block: 2px solid rgba(0, 0, 0, 0.85);
   }
   .case-tape--wip {
+    top: 42%;
     background:
       repeating-linear-gradient(
         -45deg,
@@ -226,12 +226,9 @@ button:focus-visible {
       );
   }
   .case-tape--live {
-    background:
-      repeating-linear-gradient(
-        -45deg,
-        #c9f24b 0 12px,
-        #111 12px 24px
-      );
+    top: auto;
+    bottom: 14%;
+    background: #c9f24b;
   }
   .case-tape__label {
     font-family: var(--font-mono);
@@ -240,13 +237,17 @@ button:focus-visible {
     letter-spacing: 0.14em;
     text-transform: uppercase;
     color: #111;
+    white-space: nowrap;
+  }
+  .case-tape--wip .case-tape__label {
     background: #f5d000;
     padding: 0.2rem 0.85rem;
-    white-space: nowrap;
     box-shadow: 0 0 0 2px #111;
   }
   .case-tape--live .case-tape__label {
-    background: #c9f24b;
+    background: transparent;
+    padding: 0 0.85rem;
+    box-shadow: none;
   }
 
   /* form field: luxury intake styling */
