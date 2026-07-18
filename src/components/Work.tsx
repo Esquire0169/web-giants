@@ -19,6 +19,7 @@ function CaseCard({
   problemLabel,
   solutionLabel,
   openLabel,
+  priceFromLabel,
   privateBadge,
   reduced,
   light,
@@ -28,6 +29,7 @@ function CaseCard({
   problemLabel: string
   solutionLabel: string
   openLabel: string
+  priceFromLabel: string
   privateBadge: string
   reduced: boolean
   light: boolean
@@ -147,6 +149,9 @@ function CaseCard({
               <h3 className="display-xl text-2xl text-bone transition-colors duration-500 group-hover:text-lime lg:text-3xl">
                 {c.name}
               </h3>
+              <p className="mt-2 font-mono text-[11px] tracking-[0.14em] text-lime/85 uppercase">
+                {priceFromLabel}
+              </p>
               <span
                 className="mt-3 block h-px w-10 origin-left scale-x-75 bg-current opacity-40 transition-all duration-500 group-hover:scale-x-100 group-hover:opacity-90"
                 style={{ color: c.accent }}
@@ -236,6 +241,7 @@ export function Work() {
               problemLabel={t.work.problemLabel}
               solutionLabel={t.work.solutionLabel}
               openLabel={c.kind === 'external' ? t.work.openExternal : t.work.openPrivate}
+              priceFromLabel={t.work.priceFrom.replace('{price}', c.priceFrom)}
               privateBadge={t.work.private.badge}
               reduced={reduced}
               light={light}

@@ -44,6 +44,8 @@ export interface Dict {
     solutionLabel: string
     openExternal: string
     openPrivate: string
+    /** Template with `{price}`, e.g. "from {price}" */
+    priceFrom: string
     othersKicker: string
     othersTitle: string
     othersBody: string
@@ -179,7 +181,7 @@ const en: Dict = {
     kicker: 'Services',
     titlePre: 'What we',
     titleAccent: 'craft',
-    sub: 'Four disciplines, one standard: every deliverable engineered to perform like a flagship product.',
+    sub: 'Six disciplines, one standard: every deliverable engineered to perform like a flagship product.',
     openHint: 'Open',
     closeHint: 'Close',
     items: [
@@ -215,6 +217,22 @@ const en: Dict = {
         metric: '31 systems in production',
         tags: ['AI Systems', 'Three.js', 'LLM Ops'],
       },
+      {
+        num: '05',
+        title: 'CRM System Development',
+        promise: 'Operations that finally stay in sync.',
+        body: 'Custom CRM platforms tailored to your sales, ops and support flows — pipelines, roles, automations and reporting without the bloat of off-the-shelf suites.',
+        metric: 'End-to-end business workflows',
+        tags: ['CRM', 'Dashboards', 'Automations'],
+      },
+      {
+        num: '06',
+        title: 'Web Editors & Tools',
+        promise: 'Professional tools, right in the browser.',
+        body: 'Browser-based editors and internal instruments — 3D planners, configurators, document tools and admin workplaces that feel as sharp as desktop software.',
+        metric: 'Desktop-grade in the browser',
+        tags: ['Editors', 'Configurators', 'WebGL'],
+      },
     ],
   },
   work: {
@@ -226,6 +244,7 @@ const en: Dict = {
     solutionLabel: 'Solution',
     openExternal: 'Open project',
     openPrivate: 'View case',
+    priceFrom: 'from {price}',
     othersKicker: 'Archive',
     othersTitle: 'And others',
     othersBody:
@@ -254,6 +273,14 @@ const en: Dict = {
         solution:
           'A dark editorial site: practices, team, trust signals, and a frictionless CTA to book a call.',
         result: 'Conversion-focused launch with strong visual hierarchy and deploy-ready stack',
+      },
+      {
+        category: 'Furniture / 3D Configurator',
+        problem:
+          'A furniture brand needed more than a catalog — customers had to design kitchens, wardrobes and TV units themselves.',
+        solution:
+          'A modern site with in-browser 3D design: kitchens (including U-shaped), wardrobe systems, TV stands and tailored configurations with full pricing.',
+        result: 'Customers explore, configure and get a personal setup — all on one platform',
       },
       {
         category: '3D Editor / Interior',
@@ -374,7 +401,7 @@ const en: Dict = {
       projectType: 'Project type',
       projectTypes: ['Website', 'Mobile App', 'Game', 'AI / Interactive', 'Something else'],
       budget: 'Budget range',
-      budgets: ['$10–25k', '$25–50k', '$50–100k', '$100k+', 'Not sure yet'],
+      budgets: ['$1.5–4k', '$4–10k', '$10–25k', '$25–50k', '$50k+', 'Not sure yet'],
       message: 'Message',
       messagePlaceholder:
         'A few lines about your goals, timeline, or the world you want to build\u2026',
@@ -456,7 +483,7 @@ const ru: Dict = {
     kicker: 'Услуги',
     titlePre: 'Что мы',
     titleAccent: 'создаём',
-    sub: 'Четыре дисциплины, один стандарт: каждый результат спроектирован работать как флагманский продукт.',
+    sub: 'Шесть дисциплин, один стандарт: каждый результат спроектирован работать как флагманский продукт.',
     openHint: 'Открыть',
     closeHint: 'Закрыть',
     items: [
@@ -492,6 +519,22 @@ const ru: Dict = {
         metric: '31 система в продакшене',
         tags: ['AI Systems', 'Three.js', 'LLM Ops'],
       },
+      {
+        num: '05',
+        title: 'Разработка CRM-систем',
+        promise: 'Операции, которые наконец синхронизированы.',
+        body: 'Кастомные CRM под ваши продажи, операции и поддержку — воронки, роли, автоматизации и отчёты без лишнего веса коробочных решений.',
+        metric: 'Сквозные бизнес-процессы',
+        tags: ['CRM', 'Дашборды', 'Автоматизации'],
+      },
+      {
+        num: '06',
+        title: 'Веб-редакторы и инструменты',
+        promise: 'Профессиональные инструменты прямо в браузере.',
+        body: 'Браузерные редакторы и внутренние инструменты — 3D-планировщики, конфигураторы, документные модули и рабочие места, острые как десктопный софт.',
+        metric: 'Уровень десктопа в браузере',
+        tags: ['Редакторы', 'Конфигураторы', 'WebGL'],
+      },
     ],
   },
   work: {
@@ -503,6 +546,7 @@ const ru: Dict = {
     solutionLabel: 'Решение',
     openExternal: 'Открыть проект',
     openPrivate: 'Смотреть кейс',
+    priceFrom: 'от {price}',
     othersKicker: 'Архив',
     othersTitle: 'И другие',
     othersBody:
@@ -531,6 +575,14 @@ const ru: Dict = {
         solution:
           'Тёмный editorial-сайт: практики, команда, доверие и путь к консультации.',
         result: 'Конверсионный лендинг с деплоем и сильной визуальной иерархией',
+      },
+      {
+        category: 'Мебель / 3D-конфигуратор',
+        problem:
+          'Мебельной компании нужен был не просто каталог — клиент должен сам собрать кухню, шкаф или ТВ-тумбу.',
+        solution:
+          'Современный сайт с 3D-проектированием: кухни (включая П-образные), гардеробные системы, ТВ-тумбы и индивидуальный подбор с полным просчётом вариантов.',
+        result: 'Клиент заходит, знакомится со всеми возможностями и получает конфигурацию под себя',
       },
       {
         category: '3D-редактор / Интерьер',
@@ -651,7 +703,7 @@ const ru: Dict = {
       projectType: 'Тип проекта',
       projectTypes: ['Сайт', 'Мобильное приложение', 'Игра', 'AI / Интерактив', 'Что-то другое'],
       budget: 'Бюджет',
-      budgets: ['$10–25k', '$25–50k', '$50–100k', '$100k+', 'Пока не знаю'],
+      budgets: ['$1.5–4k', '$4–10k', '$10–25k', '$25–50k', '$50k+', 'Пока не знаю'],
       message: 'Сообщение',
       messagePlaceholder:
         'Несколько строк о целях, сроках или мире, который вы хотите построить\u2026',

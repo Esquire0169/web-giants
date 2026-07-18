@@ -13,7 +13,9 @@ interface Props {
 export function PrivateCasePage({ caseId, onClose }: Props) {
   const { t } = useLocale()
   const base = getCaseById(caseId)
-  const copyIndex = base ? ['mystic', 'parma', 'ai-3d', 'kids', 'superpower'].indexOf(base.id) : -1
+  const copyIndex = base
+    ? ['mystic', 'parma', 'richmeb', 'ai-3d', 'kids', 'superpower'].indexOf(base.id)
+    : -1
   const copy = copyIndex >= 0 ? t.work.cases[copyIndex] : null
   const [active, setActive] = useState(0)
 
@@ -80,6 +82,9 @@ export function PrivateCasePage({ caseId, onClose }: Props) {
             {copy.category}
           </p>
           <h1 className="display-xl text-[clamp(2.4rem,6vw,5.5rem)] text-bone">{base.name}</h1>
+          <p className="mt-3 font-mono text-xs tracking-[0.16em] text-lime/90 uppercase">
+            {t.work.priceFrom.replace('{price}', base.priceFrom)}
+          </p>
           <p className="mt-6 max-w-xl text-base leading-relaxed text-fog">{copy.solution}</p>
         </motion.div>
 

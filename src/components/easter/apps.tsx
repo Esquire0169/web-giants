@@ -12,10 +12,18 @@ export interface AppApi {
 
 const SERVICE_ICONS = ['🎮', '🌐', '📱', '🤖'] as const
 /** Short 8.3-style names so RU/EN labels never collide in the explorer grid. */
-const SERVICE_EXES = ['Games.exe', 'Web.exe', 'Mobile.exe', 'AI.exe'] as const
+const SERVICE_EXES = [
+  'Games.exe',
+  'Web.exe',
+  'Mobile.exe',
+  'AI.exe',
+  'CRM.exe',
+  'Editors.exe',
+] as const
 const CASE_ICONS: Record<string, string> = {
   mystic: '🔮',
   parma: '⚖️',
+  richmeb: '🛋️',
   'ai-3d': '🧊',
   kids: '⚽',
   superpower: '⚡',

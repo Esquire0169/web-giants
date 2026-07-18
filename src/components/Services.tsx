@@ -163,50 +163,93 @@ export function Services() {
   const { reduced, light } = useMotionBudget()
   const [openNum, setOpenNum] = useState<string | null>(null)
 
-  /* Exit progress: 0 while the section is on screen, ramps to 1 as it scrolls
-     past the top of the viewport — the top cards disperse while still visible. */
+  /* Each row (01–02 / 03–04 / 05–06) exits on its own scroll window so lower
+     cards stay fully readable until they themselves leave the viewport. */
   const { scrollYProgress } = useScroll({
     target: ref,
     offset: ['start start', 'end start'],
   })
-  const exit = useTransform(scrollYProgress, [0.06, 0.52], [0, 1], { clamp: true })
-  const exitLow = useTransform(scrollYProgress, [0.18, 0.64], [0, 1], { clamp: true })
+  const exitRow1 = useTransform(scrollYProgress, [0.04, 0.32], [0, 1], { clamp: true })
+  const exitRow2 = useTransform(scrollYProgress, [0.28, 0.56], [0, 1], { clamp: true })
+  const exitRow3 = useTransform(scrollYProgress, [0.52, 0.82], [0, 1], { clamp: true })
 
   const dist = light ? 64 : 150
   const tilt = light ? 2 : 4
 
-  const leftX = useTransform(exit, (v) => -dist * v)
-  const rightX = useTransform(exit, (v) => dist * v)
-  const leftRotate = useTransform(exit, (v) => -tilt * v)
-  const rightRotate = useTransform(exit, (v) => tilt * v)
-  const scale = useTransform(exit, [0, 1], [1, 0.94])
-  const fade = useTransform(exit, [0, 1], [1, 0])
-  const veil = useTransform(exit, [0, 0.9], [0, 1])
+  const r1LeftX = useTransform(exitRow1, (v) => -dist * v)
+  const r1RightX = useTransform(exitRow1, (v) => dist * v)
+  const r1LeftRot = useTransform(exitRow1, (v) => -tilt * v)
+  const r1RightRot = useTransform(exitRow1, (v) => tilt * v)
+  const r1Scale = useTransform(exitRow1, [0, 1], [1, 0.94])
+  const r1Fade = useTransform(exitRow1, [0, 1], [1, 0])
 
-  const inRightX = useTransform(exitLow, (v) => dist * v)
-  const inLeftX = useTransform(exitLow, (v) => -dist * v)
-  const inRightRotate = useTransform(exitLow, (v) => tilt * v)
-  const inLeftRotate = useTransform(exitLow, (v) => -tilt * v)
-  const scaleLow = useTransform(exitLow, [0, 1], [1, 0.94])
-  const fadeLow = useTransform(exitLow, [0, 1], [1, 0])
+  const r2LeftX = useTransform(exitRow2, (v) => -dist * v)
+  const r2RightX = useTransform(exitRow2, (v) => dist * v)
+  const r2LeftRot = useTransform(exitRow2, (v) => -tilt * v)
+  const r2RightRot = useTransform(exitRow2, (v) => tilt * v)
+  const r2Scale = useTransform(exitRow2, [0, 1], [1, 0.94])
+  const r2Fade = useTransform(exitRow2, [0, 1], [1, 0])
+
+  const r3LeftX = useTransform(exitRow3, (v) => -dist * v)
+  const r3RightX = useTransform(exitRow3, (v) => dist * v)
+  const r3LeftRot = useTransform(exitRow3, (v) => -tilt * v)
+  const r3RightRot = useTransform(exitRow3, (v) => tilt * v)
+  const r3Scale = useTransform(exitRow3, [0, 1], [1, 0.94])
+  const r3Fade = useTransform(exitRow3, [0, 1], [1, 0])
+
+  const veil = useTransform(exitRow1, [0, 0.9], [0, 1])
 
   const exitStyles: (React.ComponentProps<typeof motion.div>['style'] | undefined)[] = reduced
-    ? [{ opacity: fade }, { opacity: fade }, { opacity: fadeLow }, { opacity: fadeLow }]
+    ? [
+        { opacity: r1Fade },
+        { opacity: r1Fade },
+        { opacity: r2Fade },
+        { opacity: r2Fade },
+        { opacity: r3Fade },
+        { opacity: r3Fade },
+      ]
     : [
-        { x: leftX, rotateZ: leftRotate, scale, opacity: fade, willChange: 'transform, opacity' },
-        { x: rightX, rotateZ: rightRotate, scale, opacity: fade, willChange: 'transform, opacity' },
         {
-          x: inRightX,
-          rotateZ: inRightRotate,
-          scale: scaleLow,
-          opacity: fadeLow,
+          x: r1LeftX,
+          rotateZ: r1LeftRot,
+          scale: r1Scale,
+          opacity: r1Fade,
           willChange: 'transform, opacity',
         },
         {
-          x: inLeftX,
-          rotateZ: inLeftRotate,
-          scale: scaleLow,
-          opacity: fadeLow,
+          x: r1RightX,
+          rotateZ: r1RightRot,
+          scale: r1Scale,
+          opacity: r1Fade,
+          willChange: 'transform, opacity',
+        },
+        /* 03–04 collapse inward (opposite of the outer pairs). */
+        {
+          x: r2RightX,
+          rotateZ: r2RightRot,
+          scale: r2Scale,
+          opacity: r2Fade,
+          willChange: 'transform, opacity',
+        },
+        {
+          x: r2LeftX,
+          rotateZ: r2LeftRot,
+          scale: r2Scale,
+          opacity: r2Fade,
+          willChange: 'transform, opacity',
+        },
+        {
+          x: r3LeftX,
+          rotateZ: r3LeftRot,
+          scale: r3Scale,
+          opacity: r3Fade,
+          willChange: 'transform, opacity',
+        },
+        {
+          x: r3RightX,
+          rotateZ: r3RightRot,
+          scale: r3Scale,
+          opacity: r3Fade,
           willChange: 'transform, opacity',
         },
       ]
