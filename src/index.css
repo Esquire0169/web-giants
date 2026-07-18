@@ -227,8 +227,14 @@ button:focus-visible {
   }
   .case-tape--live {
     top: auto;
-    bottom: 14%;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    transform: none;
     background: #c9f24b;
+    border-block: none;
+    border-top: 2px solid rgba(0, 0, 0, 0.85);
+    box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.35);
   }
   .case-tape__label {
     font-family: var(--font-mono);
