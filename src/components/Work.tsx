@@ -2,7 +2,7 @@ import { useRef } from 'react'
 import { motion, useAnimationControls } from 'motion/react'
 import { Kicker, Reveal, useAmbientPause, useMotionBudget } from './Reveal'
 import { useLocale } from '../i18n'
-import { CASE_BASE, type CaseBase } from '../data/cases'
+import { CASE_BASE, getVisibleCases, type CaseBase } from '../data/cases'
 import { CaseTape } from './CaseTape'
 
 const EASE = [0.22, 1, 0.36, 1] as const
@@ -207,10 +207,13 @@ export function Work() {
   const { reduced, light } = useMotionBudget()
   useAmbientPause(ref)
 
-  const cases: Case[] = CASE_BASE.map((base, i) => ({
-    ...base,
-    ...t.work.cases[i],
-  }))
+  const cases: Case[] = getVisibleCases().map((base) => {
+    const i = CASE_BASE.findIndex((c) => c.id === base.id)
+    return {
+      ...base,
+      ...t.work.cases[i],
+    }
+  })
 
   return (
     <section id="work" ref={ref} className="relative border-t border-slate-line/60">

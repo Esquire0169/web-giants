@@ -1,5 +1,5 @@
 import { useMemo, useState, type ReactNode } from 'react'
-import { CASE_BASE } from '../../data/cases'
+import { CASE_BASE, getVisibleCases } from '../../data/cases'
 import { useLocale } from '../../i18n'
 import { SnakeWindow } from './SnakeGame'
 
@@ -321,11 +321,14 @@ function PortfolioWindow({ api }: { api: AppApi }) {
   const { t } = useLocale()
   const cases = useMemo(
     () =>
-      CASE_BASE.map((base, i) => ({
-        ...base,
-        ...t.work.cases[i],
-        icon: CASE_ICONS[base.id] ?? '📁',
-      })),
+      getVisibleCases().map((base) => {
+        const i = CASE_BASE.findIndex((c) => c.id === base.id)
+        return {
+          ...base,
+          ...t.work.cases[i],
+          icon: CASE_ICONS[base.id] ?? '📁',
+        }
+      }),
     [t],
   )
   const [selected, setSelected] = useState<string | null>(cases[0]?.id ?? null)

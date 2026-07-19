@@ -20,6 +20,11 @@ export interface CaseBase {
   href?: string
   /** Gallery for private case pages */
   gallery?: string[]
+  /**
+   * Temporarily hide from Work / easter / deep links.
+   * RESTORE: set `hidden: false` (or remove the flag) on richmeb when asked.
+   */
+  hidden?: boolean
 }
 
 export const CASE_BASE: CaseBase[] = [
@@ -56,6 +61,8 @@ export const CASE_BASE: CaseBase[] = [
     accent: '#c4a574',
     kind: 'external',
     href: 'https://richmeb.com',
+    // TEMP hidden — restore when user asks (remove `hidden: true`)
+    hidden: true,
     gallery: [
       asset('cases/richmeb-site.jpg'),
       asset('cases/richmeb-configurator.jpg'),
@@ -108,5 +115,12 @@ export const CASE_BASE: CaseBase[] = [
 ]
 
 export function getCaseById(id: string) {
-  return CASE_BASE.find((c) => c.id === id)
+  const c = CASE_BASE.find((entry) => entry.id === id)
+  if (!c || c.hidden) return undefined
+  return c
+}
+
+/** Cases shown on the site (excludes temporarily hidden entries). */
+export function getVisibleCases() {
+  return CASE_BASE.filter((c) => !c.hidden)
 }
