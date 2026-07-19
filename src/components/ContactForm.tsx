@@ -571,6 +571,13 @@ export function ContactForm({
                 type="submit"
                 disabled={status !== 'idle'}
                 whileTap={reduced || status !== 'idle' ? undefined : { scale: 0.98 }}
+                onPointerDown={(e) => {
+                  if (status !== 'idle' || reduced) return
+                  const el = e.currentTarget
+                  el.classList.remove('jello-horizontal')
+                  void el.offsetWidth
+                  el.classList.add('jello-horizontal')
+                }}
                 className={`group inline-flex w-full items-center justify-center gap-3 rounded-full px-8 py-4.5 font-mono text-xs font-medium tracking-[0.18em] uppercase transition-all duration-400 focus-visible:outline-none ${
                   cinematic
                     ? status === 'sent' || status === 'locked'

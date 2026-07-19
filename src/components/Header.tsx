@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion } from 'motion/react'
 import { useLocale } from '../i18n'
 import type { Lang } from '../i18n/dict'
@@ -7,6 +7,102 @@ import { ContactLinks } from './ContactLinks'
 
 const EASE = [0.22, 1, 0.36, 1] as const
 const LANGS: Lang[] = ['en', 'ru']
+
+const PILL_SLIDE_MS = 250
+const PILL_HOLD_MS = 80
+const PILL_FADE_MS = 420
+
+function SlidingNav({
+  items,
+}: {
+  items: { label: string; href: string }[]
+}) {
+  const pillRef = useRef<HTMLSpanElement>(null)
+  const tabRefs = useRef<(HTMLAnchorElement | null)[]>([])
+  const fadeTimer = useRef<number | null>(null)
+  const lastIndex = useRef(0)
+  const [active, setActive] = useState<number | null>(null)
+  const [pillOn, setPillOn] = useState(false)
+
+  const placePill = useCallback((index: number, animate: boolean) => {
+    const pill = pillRef.current
+    const tab = tabRefs.current[index]
+    if (!pill || !tab) return
+    if (!animate) pill.style.transition = 'none'
+    pill.style.transform = `translateX(${tab.offsetLeft}px)`
+    pill.style.width = `${tab.offsetWidth}px`
+    if (!animate) {
+      void pill.offsetWidth
+      pill.style.transition = ''
+    }
+  }, [])
+
+  const flashTo = useCallback(
+    (index: number) => {
+      if (fadeTimer.current) window.clearTimeout(fadeTimer.current)
+      // Park under the previous tab, then slide to the new one and evaporate.
+      placePill(lastIndex.current, false)
+      setActive(index)
+      setPillOn(true)
+      requestAnimationFrame(() => {
+        placePill(index, true)
+        lastIndex.current = index
+        fadeTimer.current = window.setTimeout(() => {
+          setPillOn(false)
+          fadeTimer.current = window.setTimeout(() => {
+            setActive(null)
+            fadeTimer.current = null
+          }, PILL_FADE_MS)
+        }, PILL_SLIDE_MS + PILL_HOLD_MS)
+      })
+    },
+    [placePill],
+  )
+
+  useLayoutEffect(() => {
+    placePill(lastIndex.current, false)
+  }, [items, placePill])
+
+  useEffect(() => {
+    const onResize = () => placePill(lastIndex.current, false)
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [placePill])
+
+  useEffect(
+    () => () => {
+      if (fadeTimer.current) window.clearTimeout(fadeTimer.current)
+    },
+    [],
+  )
+
+  return (
+    <nav aria-label="Primary" className="hidden lg:block">
+      <div className="t-tabs" role="tablist">
+        <span
+          ref={pillRef}
+          className={`t-tabs-pill${pillOn ? ' is-on' : ''}`}
+          aria-hidden="true"
+        />
+        {items.map((item, i) => (
+          <a
+            key={`${item.href}-${item.label}`}
+            ref={(el) => {
+              tabRefs.current[i] = el
+            }}
+            href={item.href}
+            role="tab"
+            aria-selected={active === i}
+            className="t-tab"
+            onClick={() => flashTo(i)}
+          >
+            {item.label}
+          </a>
+        ))}
+      </div>
+    </nav>
+  )
+}
 
 function LangSwitcher({ className = '' }: { className?: string }) {
   const { lang, setLang, t } = useLocale()
@@ -84,17 +180,7 @@ export function Header() {
             />
           </a>
 
-          <nav className="hidden items-center gap-8 lg:flex" aria-label="Primary">
-            {t.header.nav.map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                className="link-sweep font-mono text-[11px] tracking-[0.22em] text-fog uppercase transition-colors duration-300 hover:text-bone"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
+          <SlidingNav items={t.header.nav} />
 
           <div className="flex items-center gap-3 lg:gap-5">
             <ContactLinks variant="header" />

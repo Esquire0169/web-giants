@@ -180,7 +180,7 @@ export function Hero() {
           >
             <a
               href="#contact"
-              className="group inline-flex items-center gap-3 rounded-full bg-lime px-8 py-4 font-mono text-xs font-medium tracking-[0.18em] text-ink uppercase transition-all duration-400 hover:bg-lime-bright hover:shadow-[0_0_48px_-8px_rgba(201,242,75,0.55)]"
+              className="vibrate-2 group inline-flex items-center gap-3 rounded-full bg-lime px-8 py-4 font-mono text-xs font-medium tracking-[0.18em] text-ink uppercase transition-all duration-400 hover:bg-lime-bright hover:shadow-[0_0_48px_-8px_rgba(201,242,75,0.55)]"
             >
               {t.hero.ctaPrimary}
               <span className="transition-transform duration-400 group-hover:translate-x-1.5">

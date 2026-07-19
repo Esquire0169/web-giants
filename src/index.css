@@ -200,6 +200,79 @@ button:focus-visible {
     box-shadow: 0 0 24px -8px rgba(201, 242, 75, 0.35);
   }
 
+  /* Sliding nav tabs — pill slides then evaporates */
+  .t-tabs {
+    --tabs-dur: 250ms;
+    --tabs-ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --tabs-text-muted: rgba(193, 193, 193, 0.72);
+    --tabs-text-active: #f4f1ea;
+    --tabs-bar-bg: rgba(255, 255, 255, 0.04);
+    --tabs-pill-bg: rgba(201, 242, 75, 0.14);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    padding: 3px;
+    border-radius: 48px;
+    border: 1px solid var(--color-slate-line);
+    background: var(--tabs-bar-bg);
+  }
+  .t-tab {
+    position: relative;
+    appearance: none;
+    border: 0;
+    background: transparent;
+    height: 30px;
+    padding: 4px 12px;
+    color: var(--tabs-text-muted);
+    cursor: pointer;
+    border-radius: 48px;
+    z-index: 1;
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: color var(--tabs-dur) var(--tabs-ease);
+  }
+  .t-tab:not([aria-selected='true']):hover,
+  .t-tab[aria-selected='true'] {
+    color: var(--tabs-text-active);
+  }
+  .t-tab[aria-selected='true'] {
+    color: var(--color-lime);
+  }
+  .t-tabs-pill {
+    position: absolute;
+    top: 3px;
+    left: 0;
+    height: 30px;
+    width: 0;
+    background: var(--tabs-pill-bg);
+    border: 1px solid rgba(201, 242, 75, 0.28);
+    border-radius: 48px;
+    transform: translateX(0);
+    opacity: 0;
+    transition:
+      transform var(--tabs-dur) var(--tabs-ease),
+      width var(--tabs-dur) var(--tabs-ease),
+      opacity 420ms var(--tabs-ease);
+    will-change: transform, width, opacity;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .t-tabs-pill.is-on {
+    opacity: 1;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .t-tabs-pill,
+    .t-tab {
+      transition: none !important;
+    }
+  }
+
   /* quarantine / caution tape across case visuals */
   .case-tape {
     pointer-events: none;
@@ -639,4 +712,38 @@ button:focus-visible {
   0%, 97%, 100% { opacity: 1; }
   95% { opacity: 0.95; }
   98% { opacity: 0.92; }
+}
+
+/* Animista vibrate-2 — Start a Project CTA */
+.vibrate-2 {
+  animation: vibrate-2 0.3s linear infinite both;
+}
+@keyframes vibrate-2 {
+  0% { transform: translate(0); }
+  20% { transform: translate(2px, -2px); }
+  40% { transform: translate(2px, 2px); }
+  60% { transform: translate(-2px, 2px); }
+  80% { transform: translate(-2px, -2px); }
+  100% { transform: translate(0); }
+}
+
+/* Animista jello-horizontal — Send request CTA */
+.jello-horizontal {
+  animation: jello-horizontal 0.9s both;
+}
+@keyframes jello-horizontal {
+  0% { transform: scale3d(1, 1, 1); }
+  30% { transform: scale3d(1.25, 0.75, 1); }
+  40% { transform: scale3d(0.75, 1.25, 1); }
+  50% { transform: scale3d(1.15, 0.85, 1); }
+  65% { transform: scale3d(0.95, 1.05, 1); }
+  75% { transform: scale3d(1.05, 0.95, 1); }
+  100% { transform: scale3d(1, 1, 1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vibrate-2,
+  .jello-horizontal {
+    animation: none !important;
+  }
 }
