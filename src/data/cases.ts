@@ -52,10 +52,10 @@ export const CASE_BASE: CaseBase[] = [
     image: asset('cases/richmeb-site.jpg'),
     stack: ['React', 'Three.js', 'WebGL'],
     priceFrom: '$12k',
-    status: 'wip',
-    eta: '7d',
+    status: 'live',
     accent: '#c4a574',
-    kind: 'private',
+    kind: 'external',
+    href: 'https://richmeb.com',
     gallery: [
       asset('cases/richmeb-site.jpg'),
       asset('cases/richmeb-configurator.jpg'),
