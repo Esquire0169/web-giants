@@ -20,10 +20,7 @@ export interface CaseBase {
   href?: string
   /** Gallery for private case pages */
   gallery?: string[]
-  /**
-   * Temporarily hide from Work / easter / deep links.
-   * RESTORE: set `hidden: false` (or remove the flag) on richmeb when asked.
-   */
+  /** Hide from Work / easter / deep links when true */
   hidden?: boolean
 }
 
@@ -61,8 +58,6 @@ export const CASE_BASE: CaseBase[] = [
     accent: '#c4a574',
     kind: 'external',
     href: 'https://richmeb.com',
-    // TEMP hidden — restore when user asks (remove `hidden: true`)
-    hidden: true,
     gallery: [
       asset('cases/richmeb-site.jpg'),
       asset('cases/richmeb-configurator.jpg'),
