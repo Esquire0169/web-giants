@@ -1,7 +1,7 @@
 import { asset } from '../lib/asset'
 
 export type CaseKind = 'external' | 'private'
-export type CaseStatus = 'live' | 'wip'
+export type CaseStatus = 'live' | 'wip' | 'refine'
 export type CaseEta = '7d' | '1m' | '2m' | '6m'
 
 export interface CaseBase {
@@ -36,6 +36,28 @@ export const CASE_BASE: CaseBase[] = [
     accent: '#eab308',
     kind: 'external',
     href: 'https://t.me/mysticf_bot',
+  },
+  {
+    id: 'gigant-media',
+    name: 'GIGANT MEDIA',
+    image: asset('cases/gigant-media.jpg'),
+    stack: ['HTML', 'CSS', 'JavaScript'],
+    priceFrom: '$3k',
+    status: 'refine',
+    accent: '#acd03a',
+    kind: 'external',
+    href: 'https://bestgigantmedia.uz',
+  },
+  {
+    id: 'klz',
+    name: 'KLZ',
+    image: asset('cases/klz-uz.jpg'),
+    stack: ['Next.js', 'TypeScript', 'Sanity'],
+    priceFrom: '$8k',
+    status: 'refine',
+    accent: '#e30613',
+    kind: 'external',
+    href: 'https://klz-uz.com',
   },
   {
     id: 'parma',

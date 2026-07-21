@@ -24,6 +24,8 @@ const CASE_ICONS: Record<string, string> = {
   mystic: '🔮',
   parma: '⚖️',
   richmeb: '🛋️',
+  'gigant-media': '🪧',
+  klz: '🎨',
   'ai-3d': '🧊',
   kids: '⚽',
   superpower: '⚡',

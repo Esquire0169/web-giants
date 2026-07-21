@@ -49,6 +49,8 @@ export interface Dict {
     status: {
       live: string
       wip: string
+      /** Same quarantine tape as WIP, different wording */
+      refine: string
       /** Template with `{eta}` after the WIP label */
       wipWithEta: string
       eta: {
@@ -260,6 +262,7 @@ const en: Dict = {
     status: {
       live: 'Live',
       wip: 'In development',
+      refine: 'Under revision',
       wipWithEta: 'In development ({eta})',
       eta: {
         '7d': 'ETA 7 days',
@@ -289,6 +292,22 @@ const en: Dict = {
         solution:
           'An AI platform for tarot, runes, natal charts and numerology — credit store, request history, and a polished reading flow.',
         result: 'Shipped end-to-end product with credits commerce and retained reading sessions',
+      },
+      {
+        category: 'Advertising Production / Corporate Site',
+        problem:
+          'A full-cycle advertising manufacturer looked outdated online — weak hero, dry services catalog, and a buried path to inquiry.',
+        solution:
+          'A light premium B2B redesign: clear USP, 13 service directions, case stories, branch geography across Uzbekistan, and a frictionless lead flow.',
+        result: 'A sales-ready site that explains who they are in seconds and drives project requests',
+      },
+      {
+        category: 'Industrial / Coatings B2B',
+        problem:
+          'A leading paint plant needed a modern multilingual storefront for products, raw materials, dealers and logistics.',
+        solution:
+          'A Next.js B2B platform: RU/UZ/EN, product & materials catalogs, dealer flow, delivery map, and Sanity-ready content.',
+        result: 'Production industrial site with catalog, locales and a clear path from product to quote',
       },
       {
         category: 'Legal Website',
@@ -573,6 +592,7 @@ const ru: Dict = {
     status: {
       live: 'Работает',
       wip: 'В разработке',
+      refine: 'В доработке',
       wipWithEta: 'В разработке ({eta})',
       eta: {
         '7d': 'Срок 7 дней',
@@ -602,6 +622,22 @@ const ru: Dict = {
         solution:
           'AI-платформа: таро, руны, натал, нумерология, магазин кредитов и история запросов.',
         result: 'Готовый пользовательский поток с монетизацией и удержанием сессий',
+      },
+      {
+        category: 'Рекламное производство / Корпсайт',
+        problem:
+          'Производство полного цикла выглядело устаревшим онлайн: слабый герой, сухой каталог услуг и потерянный путь к заявке.',
+        solution:
+          'Светлый premium B2B-редизайн: жёсткое УТП, 13 направлений, кейсы, география филиалов по Узбекистану и понятный лид-флоу.',
+        result: 'Продающий сайт, который за секунды объясняет компанию и ведёт к заявке на проект',
+      },
+      {
+        category: 'Индустриальный B2B / ЛКМ',
+        problem:
+          'Крупному лакокрасочному заводу нужен был современный мультиязычный фасад: продукция, сырьё, дилеры и логистика.',
+        solution:
+          'Next.js B2B-платформа: RU/UZ/EN, каталоги продукции и сырья, дилерский поток, карта доставки и Sanity-ready контент.',
+        result: 'Production-сайт с каталогом, локалями и ясным путём от продукта к коммерческому запросу',
       },
       {
         category: 'Юридический сайт',

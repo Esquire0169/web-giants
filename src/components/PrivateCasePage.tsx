@@ -15,7 +15,7 @@ export function PrivateCasePage({ caseId, onClose }: Props) {
   const { t } = useLocale()
   const base = getCaseById(caseId)
   const copyIndex = base
-    ? ['mystic', 'parma', 'richmeb', 'ai-3d', 'kids', 'superpower'].indexOf(base.id)
+    ? ['mystic', 'gigant-media', 'klz', 'parma', 'richmeb', 'ai-3d', 'kids', 'superpower'].indexOf(base.id)
     : -1
   const copy = copyIndex >= 0 ? t.work.cases[copyIndex] : null
   const [active, setActive] = useState(0)
