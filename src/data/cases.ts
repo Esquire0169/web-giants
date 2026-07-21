@@ -45,8 +45,8 @@ export const CASE_BASE: CaseBase[] = [
     priceFrom: '$3k',
     status: 'refine',
     accent: '#acd03a',
-    kind: 'external',
-    href: 'https://bestgigantmedia.uz',
+    kind: 'private',
+    gallery: [asset('cases/gigant-media.jpg')],
   },
   {
     id: 'klz',
@@ -56,8 +56,8 @@ export const CASE_BASE: CaseBase[] = [
     priceFrom: '$8k',
     status: 'refine',
     accent: '#e30613',
-    kind: 'external',
-    href: 'https://klz-uz.com',
+    kind: 'private',
+    gallery: [asset('cases/klz-uz.jpg')],
   },
   {
     id: 'parma',
