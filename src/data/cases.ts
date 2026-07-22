@@ -46,6 +46,7 @@ export const CASE_BASE: CaseBase[] = [
     status: 'refine',
     accent: '#acd03a',
     kind: 'private',
+    hidden: true,
     gallery: [asset('cases/gigant-media.jpg')],
   },
   {
@@ -57,6 +58,7 @@ export const CASE_BASE: CaseBase[] = [
     status: 'refine',
     accent: '#e30613',
     kind: 'private',
+    hidden: true,
     gallery: [asset('cases/klz-uz.jpg')],
   },
   {
